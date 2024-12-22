@@ -15,39 +15,51 @@
 <div class="min-h-screen bg-gray-100">
     <?php require '../resources/views/components/header.blade.php'; ?>
 
-    <main class="container mx-auto mt-8">
-        <div class="flex justify-end mb-6">
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Les Meves Sèries</h1>
             <a href="{{ route('series.create') }}"
-               class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded shadow">
+               class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
                 Afegir nova sèrie
             </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @foreach ($series as $serie)
-                <div class="bg-white rounded-lg shadow p-4">
-                    <h2 class="text-xl font-semibold text-gray-800">{{ $serie->titol }}</h2>
-                    <p class="text-sm text-gray-500 mt-2">{{ $serie->genere }} - {{ $serie->any }}</p>
-                    <p class="mt-4 text-gray-600">{{ $serie->descripcio }}</p>
-                    <p class="mt-4 text-sm font-medium text-indigo-600">Puntuació: {{ $serie->puntuacio }}</p>
-
-                    <div class="mt-4 flex space-x-2">
-                        <a href="{{ route('series.edit', $serie->id) }}"
-                           class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-1 px-3 rounded shadow">
-                            Modificar
-                        </a>
-                        <form action="{{ route('series.destroy', $serie->id) }}" method="POST" onsubmit="return confirm('Estàs segur que vols eliminar aquesta sèrie?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                    class="bg-red-600 hover:bg-red-500 text-white font-bold py-1 px-3 rounded shadow">
-                                Eliminar
-                            </button>
-                        </form>
-                        <a href="{{ route('series.show', $serie->id) }}"
-                           class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-1 px-3 rounded shadow">
-                            Mostrar Detalls
-                        </a>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ $serie->titol }}</h2>
+                        <p class="text-sm text-gray-500 mb-4">{{ $serie->genere }} - {{ $serie->any }}</p>
+                        <p class="text-gray-600 mb-4 line-clamp-3">{{ $serie->descripcio }}</p>
+                        <div class="flex items-center mb-4">
+                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <span class="ml-1 text-sm font-medium text-gray-600">Puntuació: {{ $serie->puntuacio }}</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-6 py-4">
+                        <div class="flex justify-between items-center">
+                            <a href="{{ route('series.edit', $serie->id) }}"
+                               class="text-yellow-600 hover:text-yellow-700 font-medium transition duration-300 ease-in-out">
+                                Modificar
+                            </a>
+                            <a href="{{ route('series.show', $serie->id) }}"
+                               class="text-blue-600 hover:text-blue-700 font-medium transition duration-300 ease-in-out">
+                                Mostrar Detalls
+                            </a>
+                            <form action="{{ route('series.destroy', $serie->id) }}" method="POST" onsubmit="return confirm('Estàs segur que vols eliminar aquesta sèrie?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                        class="text-red-600 hover:text-red-700 font-medium transition duration-300 ease-in-out">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             @endforeach

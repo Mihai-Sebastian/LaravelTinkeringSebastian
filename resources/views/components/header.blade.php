@@ -3,7 +3,7 @@
         <div class="flex lg:flex-1">
             <a href="/" class="-m-1.5 p-1.5">
                 <span class="sr-only">LaravelTinkering</span>
-                <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="LaravelTinkering">
+                <img class="h-8 w-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Atlus_logo_%282014%29.svg/1280px-Atlus_logo_%282014%29.svg.png" alt="LaravelTinkering">
             </a>
         </div>
         <div class="flex lg:hidden">
@@ -31,7 +31,7 @@
             <div class="flex items-center justify-between">
                 <a href="/" class="-m-1.5 p-1.5">
                     <span class="sr-only">LaravelTinkering</span>
-                    <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="LaravelTinkering">
+                    <img class="h-8 w-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Atlus_logo_%282014%29.svg/1280px-Atlus_logo_%282014%29.svg.png" alt="LaravelTinkering">
                 </a>
                 <button id="close-button" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-400">
                     <span class="sr-only">Close menu</span>
